@@ -187,7 +187,9 @@ __global__ void preprocessCUDA(int P, int D, int M,
 	// this Gaussian will not be processed further.
 	radii[idx] = 0;
 	tiles_touched[idx] = 0;
+        if (idx == 0) printf("View Matrix:\n%f %f %f %f\n%f %f %f %f\n%f %f %f %f\n%f %f %f %f\n", viewmatrix[0], viewmatrix[1], viewmatrix[2], viewmatrix[3], viewmatrix[4], viewmatrix[5], viewmatrix[6], viewmatrix[7], viewmatrix[8], viewmatrix[9], viewmatrix[10], viewmatrix[11], viewmatrix[12], viewmatrix[13], viewmatrix[14], viewmatrix[15]);
 
+        if (idx == 0) printf("Projection Matrix:\n%f %f %f %f\n%f %f %f %f\n%f %f %f %f\n%f %f %f %f\n", projmatrix[0], projmatrix[1], projmatrix[2], projmatrix[3], projmatrix[4], projmatrix[5], projmatrix[6], projmatrix[7], projmatrix[8], projmatrix[9], projmatrix[10], projmatrix[11], projmatrix[12], projmatrix[13], projmatrix[14], projmatrix[15]);
 	// Perform near culling, quit if outside.
 	float3 p_view;
 	if (!in_frustum(idx, orig_points, viewmatrix, projmatrix, prefiltered, p_view))
